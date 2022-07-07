@@ -13,8 +13,10 @@ namespace Dades\TestUtils\Provider\Actions;
 use Dades\EasyAdminExtensionBundle\Controller\Admin\Index;
 use Dades\TestUtils\Provider\Selector\Admin\UtilsAdminSelector;
 use Exception;
+use Symfony\Component\BrowserKit\AbstractBrowser;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Panther\Client;
-use Symfony\Component\Panther\DomCrawler\Crawler;
+//use Symfony\Component\Panther\DomCrawler\Crawler;
 
 /**
  * Used to provide navigation methods for tests.
@@ -35,7 +37,7 @@ trait NavigationAction
         return $siteLink;
     }
 
-    public function navigateLeftMenuLink(Client $client, string $fullClassName): Crawler
+    public function navigateLeftMenuLink(AbstractBrowser $client, string $fullClassName): Crawler
     {
         $crawler = $client->request('GET', Index::ADMIN_HOME_PAGE_URI);
         $itemLink = $this->navigateLeftMenu($crawler, $fullClassName);

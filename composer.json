@@ -1,0 +1,22 @@
+{
+    "name": "dades/test-utils",
+    "description": "Provides tests traits and classes to easily write tests for CmsBundle",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dades\\TestUtils\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Damien DE SOUSA",
+            "email": "desousadamien30@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1.7",
+        "symfony/panther": "^2.0.1",
+        "symfony/security-core": "^5.4.8"
+    }
+}

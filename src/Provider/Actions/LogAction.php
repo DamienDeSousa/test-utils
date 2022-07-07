@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Dades\TestUtils\Provider\Actions;
 
-use App\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Dades\TestUtils\Provider\Selector\Admin\UtilsAdminSelector;
 use Exception;
 use Facebook\WebDriver\Exception\NoSuchElementException;
@@ -24,7 +24,7 @@ use Symfony\Component\Panther\DomCrawler\Crawler;
  */
 trait LogAction
 {
-    public function login(User $user, string $loginUrl, Client $client): \Symfony\Component\DomCrawler\Crawler
+    public function login(UserInterface $user, string $loginUrl, Client $client): \Symfony\Component\DomCrawler\Crawler
     {
         $crawler = $client->request('GET', $loginUrl);
         $loginForm = $crawler->selectButton('_submit')->form([
@@ -55,7 +55,7 @@ trait LogAction
     public function initUserConnection(): Client
     {
         $this->setUpTrait();
-        /** @var User $user */
+        /** @var UserInterface $user */
         $user = $this->fixtureRepository->getReference('user');
         $client = static::createPantherClient();
         $this->login($user, $this->provideAdminLoginUri(), $client);
