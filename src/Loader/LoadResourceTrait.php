@@ -28,6 +28,11 @@ trait LoadResourceTrait
         $this->loadResource('/cmf_routing.php', $loader, $projectDir);
     }
 
+    public function loadSecurityResource(string $projectDir, LoaderInterface $loader): void
+    {
+        $this->loadResource('/security.php', $loader, $projectDir);
+    }
+
     private function loadResource(string $relativeResourcePath, LoaderInterface $loader, string $projectDir): void
     {
         $confDir = $projectDir . '/tests/fixtures/resources/config';
